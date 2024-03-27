@@ -1,0 +1,7 @@
+services:
+  bitwarden-secret-operator-rs:
+    build:
+      context: .
+      target: final
+    ports:
+      - 3001:3001

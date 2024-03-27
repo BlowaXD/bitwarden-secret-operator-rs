@@ -1,0 +1,29 @@
+apiVersion: v2
+name: bitwarden-secret-operator
+description: Deploy the Bitwarden Secret Operator
+
+type: application
+
+version: "0.15.0"
+
+appVersion: "0.15.0"
+
+keywords:
+  - operator
+  - bitwarden
+  - vaultwarden
+  - secret-management
+  - gitops
+
+icon: https://blowaxd.github.io/bitwarden-secret-operator-rs/logo.png
+
+home: https://blowaxd.github.io/bitwarden-secret-operator-rs/
+
+sources:
+  - https://github.com/BlowaXD/bitwarden-secret-operator-rs
+
+kubeVersion: '>= 1.23.0-0'
+
+maintainers:
+  - name: BlowaXD
+    email: blowa@olympusgg.com
