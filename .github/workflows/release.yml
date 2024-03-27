@@ -119,30 +119,6 @@ jobs:
         with:
           cmd: yq '.appVersion' charts/bitwarden-secret-operator/Chart.yaml
 
-      - name: Create SBOM
-        uses: anchore/sbom-action@v0
+      - uses: anchore/sbom-action@v0
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.app_version.outputs.result }}
-
-      - name: Publish SBOM
-        uses: anchore/sbom-action/publish-sbom@v0
-        with:
-          sbom-artifact-match: ".*\\.spdx\\.json"
-
-      - name: Get Latest Tag
-        id: previoustag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
-
-      - name: Download SBOM from github action
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.ANCHORE_SBOM_ACTION_PRIOR_ARTIFACT }}
-
-      - name: Add SBOM to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file_glob: true
-          file: olympusgg-bitwarden-secret-operator-rs_*.spdx.json
-          tag:  ${{ steps.previoustag.outputs.tag }}
-          overwrite: true
+          image: ghcr.io/blowaxd/bitwarden-secret-operator-rs:${{ steps.app_version.outputs.result }}
