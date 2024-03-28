@@ -9,9 +9,9 @@ use thiserror::Error;
 #[kube(
     group = "bitwarden-secret-operator.io",
     version = "v1beta1",
-    kind = "BitwardenSecret",
-    namespaced
+    kind = "BitwardenSecret"
 )]
+#[kube(namespaced)]
 #[kube(status = "BitwardenSecretStatus")]
 #[serde(rename_all = "camelCase")]
 pub struct BitwardenSecretSpec {
@@ -39,7 +39,9 @@ pub struct BitwardenSecretSpec {
 
 #[derive(Deserialize, Serialize, Clone, Debug, JsonSchema)]
 pub struct BitwardenSecretStatus {
+    #[serde(rename = "checksum")]
     pub checksum: String,
+    #[serde(rename = "lastUpdated")]
     pub last_updated: Option<DateTime<Utc>>,
 }
 

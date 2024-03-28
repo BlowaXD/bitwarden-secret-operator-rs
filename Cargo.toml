@@ -4,11 +4,19 @@ version = "0.1.0"
 edition = "2021"
 
 
+[[bin]]
+name = "crdgen"
+path = "src/crdgen.rs"
+
+[[bin]]
+name = "bitwarden-operator-rs"
+path = "src/main.rs"
+
 [dependencies]
 tokio = { version = "1.36", features = ["full", "macros", "rt-multi-thread"] }
 serde = { version = "1.0", features = [] }
 serde_json = { version = "1.0" }
-kube = { version = "0.88", features = ["runtime", "derive", "client"] }
+kube = { version = "0.89", features = ["runtime", "derive", "client"] }
 k8s-openapi = { version = "0.21", features = ["latest"] }
 schemars = { version = "0.8", features = ["chrono"] }
 anyhow = "1.0"
