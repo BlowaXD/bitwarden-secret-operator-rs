@@ -1,5 +1,9 @@
 services:
   bitwarden-secret-operator-rs:
+    environment:
+      BW_CLIENTID: client
+      BW_CLIENTSECRET: secret
+      BW_PASSWORD: password
     build:
       context: .
       target: final
