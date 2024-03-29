@@ -2,6 +2,30 @@ apiVersion: v1
 entries:
   bitwarden-secret-operator:
   - apiVersion: v2
+    appVersion: 0.17.1
+    created: "2024-03-29T12:29:42.745866473Z"
+    description: Deploy the Bitwarden Secret Operator
+    digest: 61ef4ca21fc33aad62bb7394b02cbb1f282b749d98cdfebc5eac2be4cfc507ab
+    home: https://blowaxd.github.io/bitwarden-secret-operator-rs/
+    icon: https://blowaxd.github.io/bitwarden-secret-operator-rs/logo.png
+    keywords:
+    - operator
+    - bitwarden
+    - vaultwarden
+    - secret-management
+    - gitops
+    kubeVersion: '>= 1.23.0-0'
+    maintainers:
+    - email: blowa@olympusgg.com
+      name: BlowaXD
+    name: bitwarden-secret-operator
+    sources:
+    - https://github.com/BlowaXD/bitwarden-secret-operator-rs
+    type: application
+    urls:
+    - https://github.com/BlowaXD/bitwarden-secret-operator-rs/releases/download/bitwarden-secret-operator-0.17.1/bitwarden-secret-operator-0.17.1.tgz
+    version: 0.17.1
+  - apiVersion: v2
     appVersion: 0.17.0
     created: "2024-03-29T12:03:30.401497039Z"
     description: Deploy the Bitwarden Secret Operator
@@ -49,4 +73,4 @@ entries:
     urls:
     - https://github.com/BlowaXD/bitwarden-secret-operator-rs/releases/download/bitwarden-secret-operator-0.16.0/bitwarden-secret-operator-0.16.0.tgz
     version: 0.16.0
-generated: "2024-03-29T12:03:30.401508811Z"
+generated: "2024-03-29T12:29:42.745903293Z"
