@@ -4,7 +4,7 @@ metadata:
   name: {{ include "bitwarden-secret-operator.serviceAccountName" . }}-role
 rules:
 - apiGroups: [ "bitwarden-secret-operator.io" ]
-  resources: [ "bitwardensecrets" ]
+  resources: [ "*" ]
   verbs: [ "*" ]
 - apiGroups: [ "" ]
   resources: [ "secrets" ]
