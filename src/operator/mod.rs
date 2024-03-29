@@ -131,6 +131,12 @@ pub async fn generate_secret_from_bitwarden_secret(
         schemas::OPERATOR_LAST_UPDATE_LABEL.to_string(),
         now.timestamp().to_string(),
     );
+
+    if let Some(forwarded_labels) = &bitwarden_secret.spec.labels {
+        for label in forwarded_labels {
+            labels.insert(label.0.clone(), label.1.clone());
+        }
+    }
     secret.metadata.labels = Some(labels);
     Ok(secret)
 }
