@@ -28,7 +28,7 @@ powered cluster management.
 - [x] [OpenTelemetry](https://opentelemetry.io/) Traces
 
 ## TODOs
-- [ ] Unit testing
+- [ ] Unit testing (partially implemented)
 - [ ] More metrics/observability
 
 ## Getting started
@@ -96,6 +96,13 @@ spec:
     kubernetesSecretKey: MY_KUBERNETES_SECRET_KEY # required
   stringData: # optional, string data
     test: hello-world
+```
+
+## Generating the CRD
+
+Use this command to output the CRD if you need to modify it
+```shell
+cargo run --example crd
 ```
 
 ## Credits/Thanks

@@ -52,6 +52,7 @@ pub enum BitwardenError {
 #[serde(rename_all = "camelCase")]
 pub struct BitwardenItem {
     pub id: String,
+    #[serde(rename = "notes")]
     pub note: Option<String>,
     pub fields: Option<Vec<BitwardenItemField>>,
 }
@@ -258,5 +259,44 @@ impl BitwardenCliClient {
                 Err(BitwardenError::GetItemGenericFail(item_id, err.to_string()))
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::bitwarden_cli::BitwardenItem;
+    use std::fs;
+
+    const BITWARDEN_FIELDS: &str = "tests/bitwarden-fields.json";
+    const BITWARDEN_NOTES: &str = "tests/bitwarden-note.json";
+
+    #[test]
+    fn deserialize_bitwarden_fields() -> eyre::Result<()> {
+        let bitwarden_item = fs::read_to_string(BITWARDEN_FIELDS)
+            .unwrap_or_else(|_| panic!("Couldn't deserialize {BITWARDEN_FIELDS}"));
+
+        let bitwarden_item: BitwardenItem =
+            serde_json::from_str(&bitwarden_item).expect("Couldn't deserialize to BitwardenItem");
+
+        let fields = bitwarden_item.fields.expect("Couldn't deserialize fields");
+        assert_eq!(bitwarden_item.id, "00000000-0000-0000-0000-000000000000");
+        assert_eq!(fields[0].name, "super-secret-field");
+        assert_eq!(fields[0].value, "super-secret");
+        assert_eq!(bitwarden_item.note, None);
+        Ok(())
+    }
+
+    #[test]
+    fn deserialize_bitwarden_notes() -> eyre::Result<()> {
+        let bitwarden_item = fs::read_to_string(BITWARDEN_NOTES)
+            .unwrap_or_else(|_| panic!("Couldn't deserialize {BITWARDEN_NOTES}"));
+
+        let bitwarden_item: BitwardenItem =
+            serde_json::from_str(&bitwarden_item).expect("Couldn't deserialize to BitwardenItem");
+
+        assert_eq!(bitwarden_item.id, "00000000-0000-0000-0000-000000000000");
+        assert!(bitwarden_item.fields.is_none());
+        assert_eq!(bitwarden_item.note.unwrap(), "hello-world");
+        Ok(())
     }
 }

@@ -3,10 +3,10 @@ name = "bitwarden-operator-rs"
 version = "0.1.0"
 edition = "2021"
 
-
-[[bin]]
-name = "crdgen"
+[[example]]
+name = "crd"
 path = "src/crdgen.rs"
+test = false
 
 [[bin]]
 name = "bitwarden-operator-rs"

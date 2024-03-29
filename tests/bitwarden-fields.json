@@ -1,0 +1,29 @@
+{
+  "passwordHistory": null,
+  "revisionDate": "2024-01-01T00:00:00.000Z",
+  "creationDate": "2024-01-01T00:00:00.000Z",
+  "deletedDate": null,
+  "object": "item",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "organizationId": "00000000-0000-0000-0000-000000000000",
+  "folderId": null,
+  "type": 2,
+  "reprompt": 0,
+  "name": "bitwarden-fields",
+  "notes": null,
+  "favorite": false,
+  "fields": [
+    {
+      "name": "super-secret-field",
+      "value": "super-secret",
+      "type": 1,
+      "linkedId": null
+    }
+  ],
+  "secureNote": {
+    "type": 0
+  },
+  "collectionIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ]
+}
